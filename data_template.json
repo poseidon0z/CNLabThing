@@ -1,0 +1,7 @@
+{     "ID": 0,
+    "Name": "",
+    "Programs" : 2,
+    "Names" : ["Client", "Server"],
+    "Client": "",
+    "Server" : ""
+}

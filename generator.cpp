@@ -60,16 +60,16 @@ int main()
 
     listprograms(root);
 
-    std::string choice;
+    int inchoice;
     std::cout << "Enter the program you require: ";
-    std::cin >> choice;
-
+    std::cin >> inchoice;
+    std::string choice = std::to_string(inchoice - 1);
     std::cout << "Creating: " << root[choice]["Name"].asString() << "\nConfirm? [y/n]";
 
     char ans;
     std::cin >> ans;
 
-    if (ans)
+    if (ans == 'y')
     {
         createFiles(root[choice]);
         std::cout << "Completed!";

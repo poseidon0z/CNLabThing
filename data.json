@@ -1,6 +1,6 @@
 {
     "0" : {
-        "ID": 0,
+        "ID": 1,
         "Name": "Basic Client Server Establishment",
         "Programs" : 2,
         "Names" : ["Client", "Server"],
@@ -8,7 +8,7 @@
         "Server" : "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <errno.h>\n#include <time.h>\n#include <unistd.h>\n#include <sys/types.h>\n#include <arpa/inet.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n\nint main() {\n    time_t clock;\n    char dataSending[1024];\n    int clintListn = 0, clintConnt = 0;\n    struct sockaddr_in ipOfServer;\n    clintListn = socket(AF_INET, SOCK_STREAM, 0);\n    memset(&ipOfServer, '0', sizeof(ipOfServer));\n    memset(dataSending, '0', sizeof(dataSending));\n    ipOfServer.sin_family = AF_INET;\n    ipOfServer.sin_addr.s_addr = htonl(INADDR_ANY);\n    ipOfServer.sin_port = htons(2017);\n    bind(clintListn, (struct sockaddr *)&ipOfServer, sizeof(ipOfServer));\n    listen(clintListn, 20);\n\n    while (1) {\n        printf(\"\\n\\nHi,Iam running server.Some Client hit me\\n\");\n        clintConnt = accept(clintListn, (struct sockaddr *)NULL, NULL);\n\n        clock = time(NULL);\n        snprintf(dataSending, sizeof(dataSending), \"%.24s\\r\\n\", ctime(&clock));\n        write(clintConnt, dataSending, strlen(dataSending));\n\n        close(clintConnt);\n        sleep(1);\n    }\n\n    return 0;\n}"
     },
     "1" : {    
-        "ID": 1,
+        "ID": 2,
         "Name": "TCP chat application",
         "Programs" : 2,
         "Names" : ["Client", "Server"],

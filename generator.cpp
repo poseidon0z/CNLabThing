@@ -28,6 +28,15 @@ void createFiles(const Json::Value &root)
     }
 }
 
+void listprograms(const Json::Value &root)
+{
+    for (unsigned int i = 0; i < root.size(); i++)
+    {
+        std::cout << root[std::to_string(i)]["ID"].asString() << " : " << root[std::to_string(i)]["Name"].asString() << std::endl;
+    }
+    std::cout << "\n\n";
+}
+
 int main()
 {
     const std::string filename = "data.json";
@@ -49,7 +58,10 @@ int main()
         return 1;
     }
 
+    listprograms(root);
+
     std::string choice;
+    std::cout << "Enter the program you require: ";
     std::cin >> choice;
 
     std::cout << "Creating: " << root[choice]["Name"].asString() << "\nConfirm? [y/n]";
